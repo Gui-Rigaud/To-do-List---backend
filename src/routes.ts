@@ -1,9 +1,10 @@
 import { Router, Request, Response } from "express";
+import { CreateMemberController } from "./controllers/membro/CreateMemberController";
+import { DetailMemberController } from "./controllers/membro/DetailMemberController";
 
 const router = Router();
 
-router.get('/teste', (req: Request, res: Response) =>{
-    return res.json({ ok: true });
-})
+/* Rotas de Membro */
+router.post('/membro', new CreateMemberController().handle)
 
 export {router};
