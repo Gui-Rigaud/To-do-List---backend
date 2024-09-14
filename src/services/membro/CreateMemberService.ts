@@ -13,6 +13,10 @@ class CreateMemberService {
             throw new Error("Email incorrect")
         }
 
+        if(nome.length < 5){
+            throw new Error("Name is too small")
+        }
+
         const memberAlreadyExists = await prismaClient.membro.findFirst({
             where: {
                 email: `${email}`
