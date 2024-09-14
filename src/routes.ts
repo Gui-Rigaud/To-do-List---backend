@@ -5,6 +5,7 @@ import { AuthMemberController } from "./controllers/membro/AuthMemberController"
 import { isAuthenticated } from "./middlewares/isAuthenticated";
 import { CreateTaskController } from "./controllers/tarefa/CreateTaskController";
 import { ListTasksByMemberController } from "./controllers/tarefa/ListTasksByMemberController";
+import { EndTaskController } from "./controllers/tarefa/EndTaskController";
 
 const router = Router();
 
@@ -19,5 +20,7 @@ router.get('/me', isAuthenticated, new DetailMemberController().handle)
 router.post('/tarefa', isAuthenticated, new CreateTaskController().handle)
 
 router.get('/membro/tarefa', isAuthenticated, new ListTasksByMemberController().handle)
+
+router.put('/tarefa/end', isAuthenticated, new EndTaskController().handle)
 
 export {router};

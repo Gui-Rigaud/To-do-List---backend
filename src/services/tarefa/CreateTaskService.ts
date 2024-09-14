@@ -10,10 +10,16 @@ interface TaskRequest{
 class CreateTaskService{
     async execute({ nome, description, priority, member_id }: TaskRequest){
         
+        /* Restrições para nome e prioridade */
         if(nome.length < 5){
             throw new Error("Name is too small")
         }
 
+        if(priority != "Baixa" && priority != "Média" && priority != "Alta"){
+            throw new Error("Invalid value for priority")
+        }
+
+        /* Prioridade não informada */
         if(!priority){
             priority = "Baixa";
         }
