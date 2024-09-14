@@ -3,6 +3,8 @@ import { CreateMemberController } from "./controllers/membro/CreateMemberControl
 import { DetailMemberController } from "./controllers/membro/DetailMemberController";
 import { AuthMemberController } from "./controllers/membro/AuthMemberController";
 import { isAuthenticated } from "./middlewares/isAuthenticated";
+import { CreateTaskController } from "./controllers/tarefa/CreateTaskController";
+import { ListTasksByMemberController } from "./controllers/tarefa/ListTasksByMemberController";
 
 const router = Router();
 
@@ -12,5 +14,10 @@ router.post('/membro', new CreateMemberController().handle)
 router.post('/session', new AuthMemberController().handle)
 
 router.get('/me', isAuthenticated, new DetailMemberController().handle)
+
+/* Rotas de tarefas */
+router.post('/tarefa', isAuthenticated, new CreateTaskController().handle)
+
+router.get('/membro/tarefa', isAuthenticated, new ListTasksByMemberController().handle)
 
 export {router};

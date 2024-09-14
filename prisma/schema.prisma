@@ -14,4 +14,19 @@ model Membro {
   nome     String @db.VarChar(255)
 
   @@map("membros")
+  tarefas Tarefa[]
+}
+
+model Tarefa{
+  id String @id @default(uuid())
+  nome String @db.VarChar(50)
+  description String @db.VarChar(140)
+  done Boolean @default(false)
+  finish_date DateTime? @default(now())
+  priority String @db.VarChar(10) @default("Baixa")
+
+  membro Membro @relation(fields: [member_id], references: [id])
+
+  @@map("tarefas")
+  member_id String
 }
