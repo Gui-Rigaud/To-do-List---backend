@@ -12,4 +12,6 @@ model Membro {
   email    String @db.VarChar(255)
   password String @db.VarChar(255)
   nome     String @db.VarChar(255)
+
+  @@map("membros")
 }
