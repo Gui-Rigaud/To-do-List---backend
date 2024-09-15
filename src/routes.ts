@@ -7,6 +7,7 @@ import { CreateTaskController } from "./controllers/tarefa/CreateTaskController"
 import { ListTasksByMemberController } from "./controllers/tarefa/ListTasksByMemberController";
 import { EndTaskController } from "./controllers/tarefa/EndTaskController";
 import { EditTaskController } from "./controllers/tarefa/EditTaskController";
+import { DeleteTaskController } from "./controllers/tarefa/DeleteTaskController";
 
 const router = Router();
 
@@ -25,5 +26,7 @@ router.get('/membro/tarefa', isAuthenticated, new ListTasksByMemberController().
 router.put('/tarefa/end', isAuthenticated, new EndTaskController().handle)
 
 router.put('/tarefa/edit', isAuthenticated, new EditTaskController().handle)
+
+router.delete('/tarefa/remove', isAuthenticated, new DeleteTaskController().handle)
 
 export {router};
